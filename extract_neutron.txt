@@ -1,0 +1,27 @@
+"""
+Neutron configuration details
+
+    neutron conf dir:       /etc/neutron
+    neutron conf files:     neutron.conf
+                            api-paste.conf
+                            policy.json
+                            rootwrap.conf
+                            dhcp_agent.ini
+                            l3_agent.ini
+                            lbaas_agent.ini
+                            metadata_agent.ini
+    neutron.conf options:   admin_password = None
+                            admin_tenant_name = None
+                            admin_user = None
+    neutron log options:    backdoor_port = None
+                            disable_process_locking = False
+    neutron log dir:        /var/log/neutron/
+    neutron log files:      dhcp-agent.log
+                            l3-agent.log
+                            lbaas-agent.log
+                            linuxbridge-agent.log
+                            metadata-agent.log
+                            metering-agent.log
+                            openvswitch-agent.log
+                            server.log
+"""
