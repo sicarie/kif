@@ -1,5 +1,18 @@
 
 """
+Parse service configuration files, if we're able to.
+For each service configuration file to analyze, there needs to be a
+corresponding <service>.yaml file in conf/. Then parse-config will
+attempt to extract the values inside that YAML file for each config
+file it is able to read.
+
+These are then stored both in memory and in the kif logfile.
+"""
+
+# TODO: Figure out what I was drinking when I wrote this & buy more
+# TODO: Oh, and rewrite this below to be sane.
+
+"""
 This section originally written to parse neutron configs
 """"
 import lib/parse_conf.py as parse_conf
