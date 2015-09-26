@@ -1,0 +1,6 @@
+---
+swift_conf_dir:     /etc/swift
+swift_conf_file:    object-server.conf
+swift_conf_file_options:
+    - user
+    - log_address
