@@ -1,0 +1,16 @@
+---
+nova_conf_dir:  /etc/nova
+nova_conf_file: nova.conf
+
+nova_log_dir:   /var/log/nova
+nova_log_files:
+    - api.log
+    - cert.log
+    - compute.log
+    - conductor.log
+    - consoleauth.log
+    - network.log
+    - nova-manage.log
+    - scheduler.log
+
+nova_reference: http://docs.openstack.org/juno/config-reference/content/list-of-compute-config-options.html
