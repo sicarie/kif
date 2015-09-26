@@ -1,3 +1,4 @@
+"""
 keystone:
     keystone_conf_dir:      /etc/keystone/
     keystone_conf_file:     keystone.conf
@@ -7,5 +8,4 @@ keystone:
                             admin_password = pw
                             admin_endpoint = None
                             admin_token = TOKEN
-
-
+"""
