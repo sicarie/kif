@@ -1,3 +1,7 @@
+
+"""
+This section originally written to parse neutron configs
+""""
 import lib/parse_conf.py as parse_conf
 
 neutron_config = "/etc/neutron/neutron.conf"
@@ -30,3 +34,14 @@ for logfile in neutron_log_files:
     # what am I looking for inside each file?
 
 # what is neutron backdoor_port and how is it used?
+
+
+"""
+This section originally written to parse nova config
+"""
+import lib/parse_conf.py as parse_conf
+
+nova_conf = '/etc/nova/nova.conf'
+nova_options = {}
+
+nova_options = parse-conf.get_conf(nova_conf)
