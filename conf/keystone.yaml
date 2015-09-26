@@ -1,0 +1,10 @@
+---
+keystone_conf_dir:  /etc/keystone
+keystone_conf_file: keystone.conf
+keystone_conf_options:
+    - log_config
+    - use_syslog
+    - admin_user
+    - admin_password
+    - admin_endpoint
+    - admin_token
