@@ -1,0 +1,7 @@
+"""
+Swift configuration details
+    swift conf dir:             /etc/swift/
+    swift conf file:            object-server.conf
+    object-serverconf options:  user = swift
+                                log_address = /dev/log
+"""
