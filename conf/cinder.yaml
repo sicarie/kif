@@ -1,0 +1,18 @@
+---
+cinder_conf_dir:        /etc/cinder/
+cinder_conf_file:       cinder.conf
+cinder_conf_options:
+    - use_syslog
+
+cinder_rootwrap_conf:   rootwrap.conf
+cinder_rootwrap_options:
+    - sql_connection
+    - api_paste_config
+    - rabbit_host
+    - rabbit_password
+
+cinder_log_dir:         /var/log/cinder/
+cinder_api_log:         api.log
+cinder_manage_log:      cinder-manage.log
+cinder_scheduler_log:   scheduler.log
+cinder_volume_log:      volume.log
