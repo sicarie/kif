@@ -1,3 +1,14 @@
 Kif is a collection of scripts built to attack an OpenStack cloud
 deployment. This was initially built from OpenStack Security Notes
 (OSSNS).
+
+Currently the conf/ directory holds YAML files outlining service
+configuration files and options that may be useful to an attacker.
+These will used by the parse_server_configs.py file.
+
+The modules/ directory contain the attack scripts, each of which
+is at varying levels of completion.
+
+Next steps are to get parse_server_configs.py working, determine
+what types of tags to add to the modules/ attacks, and complete
+attack scripts that are "mostly done".
