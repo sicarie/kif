@@ -2,6 +2,7 @@
 
 # input: Horizon IP address
 # Result: Horizon DOS
+# Ref: OSSN-54 - All Django session IDs stored, resulting in Horizon DOS
 
 for i in {1..99999}
 do
