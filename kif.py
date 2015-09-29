@@ -7,12 +7,37 @@ project.
 
 import logging
 import os
+import yaml
 
 
 def main():
     _init_logger()
     logging.info('Starting program.')
+    # get list of files in conf/
+    config_dir = 'conf/'
+    config_files = []
+    for item in config_dir:
+        config_candidate = os.path.join(config_dir, item)
+        if os.path.isfile(config_candidate):
+            config_files.append(config_candidate)
+        else:
+            logging.info(config_dandidate + "is in conf/ but is not a file.")
 
+    # load the yamls
+    svc_opts = {}
+    for config in config_candidate:
+        try:
+            svc = yaml.load(config, 'r')
+            logging.info("Successfully loaded service config " + config + ".")
+            logging.info("Service Options:")
+            logging.info(svc)
+            # This is probably not right
+            svc_opts{config.split('.')[1], svc}
+        except:
+            logging.info("Unable to load service config " + config)
+            logging.info("Invalid YAML?")
+
+    # So we have
 
 def _init_logger():
     """
