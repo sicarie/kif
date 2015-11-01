@@ -51,5 +51,21 @@ def _init_logger():
     logging.info('Logging initialized.')
 
 
+def _load_openrc(rc_file="conf/openrc.sh"):
+    """
+    Use an openrc file to get creds for interaction.
+
+    :parameters: rc_file - the openrc.sh file containing connection info of the target
+
+    :return: -
+    """
+    # TODO: fix this to project default dir
+    default_dir = '/home/sicarie/projects/kif/'
+    openrc_path = default_dir + rc_file
+    # TODO: put this in try block & catch non-loadable openrc
+    subprocess.check_output('source', openrc_path)
+    # TODO: get tests set up - check vars in openrc
+
+
 if __name__ == "__main__":
     main()
