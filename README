@@ -12,3 +12,6 @@ is at varying levels of completion.
 Next steps are to get parse_server_configs.py working, determine
 what types of tags to add to the modules/ attacks, and complete
 attack scripts that are "mostly done".
+
+TODO:
+    Auto-build TODO's from tags

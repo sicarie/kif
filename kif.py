@@ -33,6 +33,15 @@ def main():
             logging.info(svc)
             # This is probably not right
             svc_opts{config.split('.')[1], svc}
+'''
+>>> scope = { 'glance': { '/etc/glance.cfg': [ 'logging_blah', 'audit_blah', 'access_blah'], '/etc/glance2.cfg': [ 'users_blah', ] }, 'nova': { '/etc/nova': [ '1', '2' ] } }
+>>> scope
+>>> {'glance': {'/etc/glance2.cfg': ['users_blah'], '/etc/glance.cfg': ['logging_blah', 'audit_blah', 'access_blah']}, 'nova': {'/etc/nova': ['1', '2']}}
+import yaml
+yaml.dump(scope)
+>>> "glance:\n  /etc/glance.cfg: [logging_blah, audit_blah, access_blah]\n  /etc/glance2.cfg: [users_blah]\nnova:\n  /etc/nova: ['1', '2']\n”
+'''
+
         except:
             logging.info("Unable to load service config " + config)
             logging.info("Invalid YAML?")

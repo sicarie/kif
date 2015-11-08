@@ -1,0 +1,167 @@
+# This file holds data gathering locations that may be interesting
+# TODO: Make this actual YAML
+# TODO: decide what we want to do with logs
+ceilometer:
+    {
+    '/etc/ceilometer/ceilometer.conf':
+        {
+            #why are YAML files marked here?, maybe if exists?
+            ceilometer_event_defs:      event_definitions.yaml
+            ceilometer_pipeline:        pipeline.yaml
+            ceilometer_policy:          policy.json
+        }
+    }
+
+cinder:
+    {
+    '/etc/cinder/cinder.conf':
+        {
+            use_syslog
+        },
+    '/etc/cinder/rootwrap.conf':
+        {
+            sql_connection,
+            api_paste_config,
+            rabbit_host,
+            rabbit_password,
+        },
+    # maybe move these to a cinder_log_files value so we can iterate through them and check for access/debug values?
+    '/var/log/cinder/api.log':
+        {},
+    '/var/log/cinder/cinder-manage.log':
+        {},
+    '/var/log/cinder/scheduler.log':
+        {},
+    '/var/log/cinder/volume.log':
+        {}
+    }
+
+glance:
+    {
+    '/etc/glance/glance-api.conf':
+        {
+        use_syslog
+        },
+    '/etc/glance/glance-registry.conf':
+        {
+        use_syslog
+        }
+    }
+
+horizon:
+    {
+    '/etc/openstack-dashboard/local_settings.py':
+        {
+        'OPENSTACK_HOST',
+        'access_log',        # is this for config file or log_config file?
+        'error_log',
+        },
+    # These were options in local_settings.py but what is the value they're
+    # assigned to?
+    # horizon_config_opt_url:     "http://%s:5000/v2.0" % OPENSTACK_HOST
+    # horizon_config_opt_role:    "Member"
+    # horizon_config_opt_logging: LOGGING = {json}
+    '/etc/apache2/ports.conf':
+        {},
+    '/etc/apache2/ports.conf':
+        {},
+    '/etc/apache/conf.d/openstack-dashbaord.conf':
+        {},
+    # Again, should these two be their own values so wec an just check for debug?
+    '/var/log/httpd':
+        {},
+    '/var/log/apache2':
+        {}
+    }
+
+'keystone':
+    {
+    '/etc/keystone/keystone.conf':
+        {
+        'log_config',
+        'use_syslog',
+        'admin_user',
+        'admin_password',
+        'admin_endpoint',
+        'admin_token',
+        }
+    }
+
+neutron:
+    {
+    '/etc/neutron/neutron.conf':
+        {
+        'admin_password',
+        'admin_tenant_name',
+        'admin_user',
+        },
+    '/etc/neutron/api-paste.conf':
+        {},
+    '/etc/neutron/policy.json':
+        {},
+    '/etc/neutron/rootwrap.conf':
+        {},
+    '/etc/neutron/dhcp_agent.ini':
+        {},
+    '/etc/neutron/l3_agent.ini':
+        {},
+    '/etc/neutron/lbaas_agent.ini':
+        {},
+    '/etc/neutron/metadata_agent.ini':
+        {},
+    #more log files to juse searlized?
+    'neutron_log_values':
+        {
+        'backdoor_port',
+        'disable_process_locking',
+        },
+    '/var/log/neutron/dhcp-agent.log':
+        {},
+    '/var/log/neutron/l3-agent.log':
+        {},
+    '/var/log/neutron/lbaas-agent.log':
+        {},
+    '/var/log/neutron/linuxbridge-agent.log':
+        {},
+    '/var/log/neutron/metadata-agent.log':
+        {},
+    '/var/log/neutron/metering-agent.log':
+        {},
+    '/var/log/neutron/openvswitch-agent.log':
+        {},
+    '/var/log/neutron/server.log':
+        {},
+    }
+
+nova:
+    #nova_reference: http://docs.openstack.org/juno/config-reference/content/list-of-compute-config-options.html
+    {
+    '/etc/nova/nova.conf':
+        {},
+    #more logs to serialize?
+    '/var/log/nova/api.log':
+        {},
+    '/var/log/nova/cert.log':
+        {},
+    '/var/log/nova/compute.log':
+        {},
+    '/var/log/nova/conductor.log':
+        {},
+    '/var/log/nova/consoleauth.log':
+        {},
+    '/var/log/nova/network.log':
+        {},
+    '/var/log/nova/nova-manage.log':
+        {},
+    '/var/log/nova/scheduler.log':
+        {},
+    }
+
+swift:
+    {
+    '/etc/swift/object-server.conf':
+        {
+        'user',
+        'log_address',
+        }
+    }

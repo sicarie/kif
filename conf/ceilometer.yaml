@@ -1,7 +1,0 @@
----
-ceilometer_conf_file_dir:   /etc/ceilometer/
-ceilometer_conf_file:       ceilometer.conf
-ceilometer_event_defs:      event_definitions.yaml
-ceilometer_pipeline:        pipeline.yaml
-ceilometer_policy:          policy.json
-"""
