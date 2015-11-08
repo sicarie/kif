@@ -14,39 +14,31 @@ def main():
     _init_logger()
     logging.info('Starting program.')
     # get list of files in conf/
-    config_dir = 'conf/'
-    config_files = []
-    for item in config_dir:
-        config_candidate = os.path.join(config_dir, item)
-        if os.path.isfile(config_candidate):
-            config_files.append(config_candidate)
-        else:
-            logging.info(config_dandidate + "is in conf/ but is not a file.")
+    config_file = 'conf/recon.yaml'
 
-    # load the yamls
-    svc_opts = {}
-    for config in config_candidate:
+    try:
+        svc = yaml.load(config_file, 'r')
+        logging.info("Successfully loaded service config " + config_file + ".")
+        logging.info("Service Options:")
+        logging.info(svc)
+        # TODO: change this from config.split to yaml.dump and real parsing
         try:
-            svc = yaml.load(config, 'r')
-            logging.info("Successfully loaded service config " + config + ".")
-            logging.info("Service Options:")
-            logging.info(svc)
-            # This is probably not right
-            svc_opts{config.split('.')[1], svc}
-'''
->>> scope = { 'glance': { '/etc/glance.cfg': [ 'logging_blah', 'audit_blah', 'access_blah'], '/etc/glance2.cfg': [ 'users_blah', ] }, 'nova': { '/etc/nova': [ '1', '2' ] } }
->>> scope
->>> {'glance': {'/etc/glance2.cfg': ['users_blah'], '/etc/glance.cfg': ['logging_blah', 'audit_blah', 'access_blah']}, 'nova': {'/etc/nova': ['1', '2']}}
-import yaml
-yaml.dump(scope)
->>> "glance:\n  /etc/glance.cfg: [logging_blah, audit_blah, access_blah]\n  /etc/glance2.cfg: [users_blah]\nnova:\n  /etc/nova: ['1', '2']\n”
-'''
+            #svc_opts{config.split('.')[1], svc}
+            """
+            # scope = { 'glance': { '/etc/glance.cfg': [ 'logging_blah', 'audit_blah', 'access_blah'], '/etc/glance2.cfg': [ 'users_blah', ] }, 'nova': { '/etc/nova': [ '1', '2' ] } }
+            # scope
+            # {'glance': {'/etc/glance2.cfg': ['users_blah'], '/etc/glance.cfg': ['logging_blah', 'audit_blah', 'access_blah']}, 'nova': {'/etc/nova': ['1', '2']}}
+            # import yaml
+            # yaml.dump(scope)
+            """
+        except SyntaxError as e:
+                print e
+        print "Hahahahaha"
 
-        except:
-            logging.info("Unable to load service config " + config)
-            logging.info("Invalid YAML?")
+    except:
+        logging.info("Unable to load service config " + config_file)
+        logging.info("Invalid YAML?")
 
-    # So we have
 
 def _init_logger():
     """
