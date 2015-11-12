@@ -12,6 +12,7 @@ import yaml
 
 def main():
     _init_logger()
+    _load_openrc()
     logging.info('Starting program.')
     # get list of files in conf/
     config_file = 'conf/recon.yaml'
@@ -24,16 +25,10 @@ def main():
         # TODO: change this from config.split to yaml.dump and real parsing
         try:
             #svc_opts{config.split('.')[1], svc}
-            """
-            # scope = { 'glance': { '/etc/glance.cfg': [ 'logging_blah', 'audit_blah', 'access_blah'], '/etc/glance2.cfg': [ 'users_blah', ] }, 'nova': { '/etc/nova': [ '1', '2' ] } }
-            # scope
-            # {'glance': {'/etc/glance2.cfg': ['users_blah'], '/etc/glance.cfg': ['logging_blah', 'audit_blah', 'access_blah']}, 'nova': {'/etc/nova': ['1', '2']}}
-            # import yaml
-            # yaml.dump(scope)
-            """
         except SyntaxError as e:
+                print "ERROR: Unable to parse recon.yaml."
+                print "ERROR: Error message: "
                 print e
-        print "Hahahahaha"
 
     except:
         logging.info("Unable to load service config " + config_file)
