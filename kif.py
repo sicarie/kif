@@ -7,24 +7,42 @@ project.
 
 import logging
 import os
+import requests
+import sys
 import yaml
 
 
-def main():
+def main(argv):
     _init_logger()
     _load_openrc()
     logging.info('Starting program.')
+    try:
+        opts, args = getopt.getopt(argv,"he",["endpoint_url="])
+    except getopt.GetoptError:
+        print 'kif.py <endpoint_url>'
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            print 'kif.py -e <endpoint_url>'
+        elif opt in ("-e", "--endpoint"):
+            endpoint_url = arg
 
-    # we have to start with a service catalog, passed as arg1
+    # parse openrc and get token
+    _load_openrc()
+    '''
+    curl -s -X POST http://203.0.113.10:35357/v2.0/tokens \
+-d '{"auth": {"passwordCredentials": {"username":"test-user", \
+                                      "password":"test-password"},  \
+                                      "tenantName":"test-project"}}' \
+-H "Content-type: application/json" | jq .
+    '''
 
-    # get endpoints list using arg1
+
+    # query endpoints
 
     # run attacks that don't require authentication
     #TODO determine how to pass endpoint details
     noauth_attacks()
-
-    # parse openrc and get token
-    _load_openrc()
 
     # run auth attacks
     auth_attacks()
@@ -93,4 +111,4 @@ def try_recon(config_file='conf/recon.yaml'):
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
