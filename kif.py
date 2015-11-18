@@ -14,25 +14,20 @@ def main():
     _init_logger()
     _load_openrc()
     logging.info('Starting program.')
-    # get list of files in conf/
-    config_file = 'conf/recon.yaml'
 
-    try:
-        svc = yaml.load(config_file, 'r')
-        logging.info("Successfully loaded service config " + config_file + ".")
-        logging.info("Service Options:")
-        logging.info(svc)
-        # TODO: change this from config.split to yaml.dump and real parsing
-        try:
-            #svc_opts{config.split('.')[1], svc}
-        except SyntaxError as e:
-                print "ERROR: Unable to parse recon.yaml."
-                print "ERROR: Error message: "
-                print e
+    # we have to start with a service catalog, passed as arg1
 
-    except:
-        logging.info("Unable to load service config " + config_file)
-        logging.info("Invalid YAML?")
+    # get endpoints list using arg1
+
+    # run attacks that don't require authentication
+    #TODO determine how to pass endpoint details
+    noauth_attacks()
+
+    # parse openrc and get token
+    _load_openrc()
+
+    # run auth attacks
+    auth_attacks()
 
 
 def _init_logger():
@@ -61,6 +56,40 @@ def _load_openrc(rc_file="conf/openrc.sh"):
     # TODO: put this in try block & catch non-loadable openrc
     subprocess.check_output('source', openrc_path)
     # TODO: get tests set up - check vars in openrc
+
+
+def api_discovery():
+    # get endpoints
+
+
+def noauth_attacks():
+    # run attacks not requiring authorization
+
+
+def auth_attacks():
+    # get auth
+    # run auth attacks
+
+
+def try_recon(config_file='conf/recon.yaml'):
+    config_file = 'conf/recon.yaml'
+
+    try:
+        svc = yaml.load(config_file, 'r')
+        logging.info("Successfully loaded service config " + config_file + ".")
+        logging.info("Service Options:")
+        logging.info(svc)
+        # TODO: change this from config.split to yaml.dump and real parsing
+        try:
+            #svc_opts{config.split('.')[1], svc}
+        except SyntaxError as e:
+                print "ERROR: Unable to parse recon.yaml."
+                print "ERROR: Error message: "
+                print e
+
+    except:
+        logging.info("Unable to load service config " + config_file)
+        logging.info("Invalid YAML?")
 
 
 if __name__ == "__main__":
