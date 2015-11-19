@@ -78,15 +78,18 @@ def _load_openrc(rc_file="conf/openrc.sh"):
 
 def api_discovery():
     # get endpoints
+    pass
 
 
 def noauth_attacks():
     # run attacks not requiring authorization
+    pass
 
 
 def auth_attacks():
     # get auth
     # run auth attacks
+    pass
 
 
 def try_recon(config_file='conf/recon.yaml'):
@@ -100,6 +103,7 @@ def try_recon(config_file='conf/recon.yaml'):
         # TODO: change this from config.split to yaml.dump and real parsing
         try:
             #svc_opts{config.split('.')[1], svc}
+            pass
         except SyntaxError as e:
                 print "ERROR: Unable to parse recon.yaml."
                 print "ERROR: Error message: "
@@ -108,6 +112,9 @@ def try_recon(config_file='conf/recon.yaml'):
     except:
         logging.info("Unable to load service config " + config_file)
         logging.info("Invalid YAML?")
+
+def test_attack:
+    print "this is only a test to see if github doesnt suck"
 
 
 if __name__ == "__main__":
